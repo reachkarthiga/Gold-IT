@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="alert"
+            type="com.example.goldit.room.Alert" />
+
+        <variable
+            name="liveRate"
+            type="com.example.goldit.room.LiveRate" />
+
+        <variable
+            name="viewModel"
+            type="com.example.goldit.notifiedAlerts.NotifiedAlertViewModel" />
+
+    </data>
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation = "vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolBarSize"
+            android:background="@color/light_background"
+            android:gravity="center_vertical"
+            android:padding="@dimen/margin_6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            app:titleTextColor="@color/primary" />
+
+        <ScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/purity"
+                    style="@style/mild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:text= "@string/purity"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/gold_type"
+                    style="@style/normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/grey_rectangle"
+                    android:padding="@dimen/margin_16"
+                    android:textSize="18sp"
+                    android:text="@{alert.goldType}"
+                    app:layout_constraintTop_toBottomOf="@id/purity"
+                    tools:text="18 K" />
+
+                <TextView
+                    android:id="@+id/price"
+                    style="@style/mild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:text= "@string/per_g_rate"
+                    app:layout_constraintTop_toBottomOf="@id/gold_type" />
+
+                <TextView
+                    android:id="@+id/gold_rate"
+                    style="@style/normal"
+                    android:text="@{String.valueOf(alert.goldRate)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/grey_rectangle"
+                    android:padding="@dimen/margin_16"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@id/price"
+                    tools:text="1234" />
+
+                <TextView
+                    android:id="@+id/created_date_text"
+                    style="@style/mild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:text= "@string/alert_created"
+                    app:layout_constraintTop_toBottomOf="@id/gold_rate" />
+                <TextView
+                    android:id="@+id/created_date"
+                    style="@style/normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft= "@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/grey_rectangle"
+                    android:padding="@dimen/margin_16"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@id/created_date_text"
+                    tools:text="23-11-2020"
+                    app:formattedDateTime = "@{alert.id}"/>
+
+                <TextView
+                    android:id="@+id/alert_achieved_date_text"
+                    style="@style/mild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:text= "@string/alert_notified"
+                    app:layout_constraintTop_toBottomOf="@id/created_date" />
+                <TextView
+                    android:id="@+id/alert_achieved_date"
+                    style="@style/normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/grey_rectangle"
+                    android:padding="@dimen/margin_16"
+                    android:textSize="18sp"
+                    app:layout_constraintTop_toBottomOf="@id/alert_achieved_date_text"
+                    tools:text="20-12-2020"
+                    app:formattedDateTime = "@{alert.achievedDateTime}"/>
+
+                <TextView
+                    android:id="@+id/live_price_text"
+                    style="@style/mild"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:text= "@string/current_gold_price"
+                    app:layout_constraintTop_toBottomOf="@id/alert_achieved_date" />
+
+
+                <TextView
+                    android:id="@+id/live_price"
+                    style="@style/normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:background="@drawable/grey_rectangle"
+                    android:padding="@dimen/margin_16"
+                    android:textSize="18sp"
+                    android:text="@{String.valueOf(liveRate.goldRate)}"
+                    app:layout_constraintTop_toBottomOf="@id/live_price_text"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:text="20-12-2020" />
+
+                <TextView
+                    android:id="@+id/achieved_today_text"
+                    style="@style/buttonStyle"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:background="@drawable/primary_color_rectangle_enabled"
+                    android:text="@string/alert_done_today"
+                    app:layout_constraintTop_toBottomOf="@+id/live_price"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    />
+
+                <TextView
+                    android:id="@+id/enable_button"
+                    style="@style/buttonStyle"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:background="@drawable/primary_color_rectangle_enabled"
+                    android:text="@string/enable_alert"
+                    android:onClick="@{() -> viewModel.enableAlert(alert)}"
+                    app:layout_constraintTop_toBottomOf="@+id/live_price"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,17 @@
+
+
+# gradle files
+.gradle
+local.properties
+
+# android studio
+*.iml
+/.idea
+
+# app
+/build
+/app/build
+/app/lint
+local.properties
+# mac
+.DS_Store

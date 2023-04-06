@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutDescription="@xml/fragment_about_app_scene_land">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    app:cardCornerRadius="100dp"
+                    app:cardElevation="5dp"
+                    app:contentPadding="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/image_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id = "@+id/about"
+                    app:layout_constraintTop_toBottomOf="@id/card_view">
+
+                    <TextView
+                        android:id="@+id/invest_text"
+                        style="@style/highlight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="32dp"
+                        android:gravity="center"
+                        android:text="@string/investment"
+                        android:textStyle="italic|bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/about_app_text"
+                        style="@style/normal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:gravity="center"
+                        android:text="@string/about_app"
+                        android:textStyle="italic"
+                        />
+
+                    <TextView
+                        android:id="@+id/about_app_text1"
+                        style="@style/normal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="32dp"
+                        android:gravity="center"
+                        android:text="@string/sign_in_text_2"
+                        android:textStyle="italic"
+                        />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id = "@+id/credits"
+                    app:layout_constraintTop_toBottomOf="@id/about">
+
+                    <TextView
+                        android:id="@+id/to_note"
+                        style="@style/highlight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/credits"
+                         />
+
+                    <TextView
+                        android:id="@+id/api_used"
+                        style="@style/mild"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/api_used"
+                         />
+
+                    <TextView
+                        android:id="@+id/app_icon_used"
+                        style="@style/mild"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="32dp"
+                        android:text="@string/app_icon_used"
+                         />
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+
+
+</layout>

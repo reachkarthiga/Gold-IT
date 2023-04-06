@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "230296642371",
+    "project_id": "gold-it-c22fb",
+    "storage_bucket": "gold-it-c22fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230296642371:android:12e600cb5984a55bb505f6",
+        "android_client_info": {
+          "package_name": "com.android.goldit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230296642371-vrv01hcgfjp2d6jsivek1g85s8givomc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.goldit",
+            "certificate_hash": "33c2eaef70eb3af5299cc3dcc11ef26e6d7359d2"
+          }
+        },
+        {
+          "client_id": "230296642371-m9ql5kt9ss1n4e3bft4rmu09tlh1rcbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKLyn6QhkxKpoOKubQXPomG-JM3TmNaO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230296642371-m9ql5kt9ss1n4e3bft4rmu09tlh1rcbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

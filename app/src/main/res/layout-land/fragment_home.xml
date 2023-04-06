@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".home.Home">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.goldit.home.HomeViewModel" />
+
+        <variable
+            name="liveRate22K"
+            type="com.example.goldit.room.LiveRate" />
+
+        <variable
+            name="liveRate24K"
+            type="com.example.goldit.room.LiveRate" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/toolBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolBarSize"
+            android:background="@color/light_background"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/mild"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/margin_24"
+                android:paddingEnd="@dimen/margin_24"
+                android:text="@string/welcome"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/user_name"
+                style="@style/normal"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:gravity="start"
+                android:onClick="@{()-> viewModel.userNameClicked()}"
+                android:paddingStart="@dimen/margin_24"
+                android:paddingEnd="@dimen/margin_24"
+                android:text="@{viewModel.userName}"
+                tools:text="Karthiga" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/live"
+                    style="@style/highlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:text="@string/live"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.401"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/gold_rate"
+                    style="@style/normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_next"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:text="@string/gold_rate"
+                    app:layout_constraintStart_toEndOf="@id/live"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/liveGoldRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_24"
+                    android:layout_marginTop="@dimen/margin_12"
+                    android:background="@drawable/grey_rectangle"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/margin_16"
+                    android:paddingRight="@dimen/margin_16"
+                    app:layout_constraintTop_toBottomOf="@id/live"
+                    tools:layout_editor_absoluteX="20dp">
+
+
+                    <include
+                        android:id="@+id/gold_type_1"
+                        layout="@layout/live_rate_item"
+                        app:caratLiveRate="@{liveRate22K}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/disabled"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <include
+                        android:id="@+id/gold_type_2"
+                        layout="@layout/live_rate_item"
+                        app:caratLiveRate="@{liveRate24K}" />
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress_loader_rates"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toTopOf="@id/add_new"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/liveGoldRate" />
+
+                <TextView
+                    style="@style/mild"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_20"
+                    android:padding="@dimen/margin_8"
+                    android:text="@string/alert_on"
+                    app:layout_constraintBottom_toBottomOf="@+id/add_new"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/add_new"
+                    tools:layout_editor_absoluteX="24dp" />
+
+                <TextView
+                    android:id="@+id/add_new"
+                    style="@style/highlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_24"
+                    android:layout_marginRight="@dimen/margin_24"
+                    android:onClick="@{()->viewModel.addNewClicked()}"
+                    android:padding="@dimen/margin_8"
+                    android:text="@string/add_new_plus"
+                    android:textSize="32sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/liveGoldRate" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/alert_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:clipToPadding="false"
+                    android:paddingBottom="@dimen/margin_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="?android:attr/actionBarSize"
+                    app:layout_constraintTop_toBottomOf="@id/add_new"
+                    tools:listitem="@layout/alert_recyclerview_item" />
+
+
+                <ImageView
+                    android:id="@+id/no_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="32dp"
+                    android:paddingBottom="32dp"
+                    android:src="@drawable/ic_no_data"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginBottom="?android:attr/actionBarSize"
+                    app:layout_constraintTop_toTopOf="@id/alert_recycler_view" />
+
+                <ProgressBar
+                    android:id="@+id/progress_loader"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginBottom="?android:attr/actionBarSize"
+                    app:layout_constraintTop_toTopOf="@id/alert_recycler_view" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.goldit.home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/setAlert"
+        android:name="com.example.goldit.setAlert.SetAlert"
+        android:label="fragment_set_alert"
+        tools:layout="@layout/fragment_set_alert" >
+        <action
+            android:id="@+id/action_setAlert_to_mainPage"
+            app:destination="@id/mainPage"
+            app:exitAnim="@anim/slide_down"
+            app:popUpTo="@id/mainPage"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="alertId"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notifiedAlertFragment"
+        android:name="com.example.goldit.notifiedAlerts.NotifiedAlerts"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notified_alerts" />
+    <fragment
+        android:id="@+id/mainPage"
+        android:name="com.example.goldit.MainPage.MainPage"
+        android:label="MainPage" >
+        <action
+            android:id="@+id/action_mainPage_to_setAlert"
+            app:destination="@id/setAlert"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_left"
+            app:popUpTo="@id/mainPage" />
+        <action
+            android:id="@+id/action_mainPage_to_editProfile"
+            app:destination="@id/editProfile"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_left"
+            app:popUpTo="@id/mainPage" />
+        <action
+            android:id="@+id/action_mainPage_to_notificationDetail"
+            app:destination="@id/notifiedAlertDetailFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_left"
+            app:popUpTo="@id/mainPage" />
+        <argument
+            android:name="notitificationId"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfile"
+        android:name="com.example.goldit.editProfile.EditProfile"
+        android:label="EditProfile" >
+        <action
+            android:id="@+id/action_editProfile_to_mainPage"
+            app:destination="@id/mainPage"
+            app:exitAnim="@anim/slide_down"
+            app:popUpTo="@id/mainPage" />
+        <action
+            android:id="@+id/action_editProfile_to_aboutApp"
+            app:destination="@id/aboutApp"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_left"
+            app:popUpTo="@id/mainPage" />
+        <action
+            android:id="@+id/action_editProfile_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/notifiedAlertDetailFragment"
+        android:name="com.example.goldit.notifiedAlerts.NotifiedAlertDetail"
+        android:label="NotificationDetail" >
+
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_notifiedAlertDetailFragment_to_mainPage"
+            app:destination="@id/mainPage"
+            app:exitAnim="@anim/slide_down"
+            app:popUpTo="@id/mainPage" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/aboutApp"
+        android:name="com.example.goldit.editProfile.AboutApp"
+        android:label="AboutApp" >
+        <action
+            android:id="@+id/action_aboutApp_to_mainPage"
+            app:destination="@id/mainPage"
+            app:exitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.goldit.login.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_mainPage"
+            app:destination="@id/mainPage" />
+    </fragment>
+
+</navigation>

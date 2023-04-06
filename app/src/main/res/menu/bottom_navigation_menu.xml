@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item android:id="@+id/home"
+            android:title="@string/home"
+            android:checked="true"
+            android:icon="@drawable/ic_sharp_home_24"/>
+
+
+        <item android:icon="@drawable/ic_sharp_notifications_24"
+            android:id="@+id/notifiedAlert"
+            android:checked="false"
+            android:title="@string/notified_alerts"/>
+
+
+</menu>

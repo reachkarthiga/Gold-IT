@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+     >
+
+    <data>
+
+        <variable
+            name="alertRate"
+            type="com.example.goldit.room.Alert" />
+
+        <variable
+            name="clickListener"
+            type="com.example.goldit.home.ActiveAlertsListener" />
+    </data>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/grey_rectangle"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin_8"
+            android:onClick="@{() -> clickListener.onClick(alertRate)}">
+
+            <TextView
+                android:id="@+id/per_gram_rate"
+                style="@style/normal"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_16"
+                android:gravity="center_vertical|end"
+                android:text="@{String.valueOf(alertRate.goldRate)}"
+                tools:text="4533" />
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/mild"
+                android:layout_width="0dp"
+                android:layout_weight="0.25"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_next"
+                android:gravity="center"
+                android:text="@string/one_gram" />
+
+            <TextView
+                android:id="@+id/gold_type"
+                style="@style/normal"
+                android:layout_width="0dp"
+                android:layout_weight="1.25"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|end"
+                android:text="@{String.valueOf(alertRate.goldType)}"
+                tools:text="22K" />
+
+            <ImageView
+                android:id="@+id/gold_type_icon"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="24dp"
+                android:padding="@dimen/margin_4dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_gold_type"
+                tools:layout_editor_absoluteX="208dp"
+                />
+
+        </LinearLayout>
+
+
+
+</layout>
